@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  assetPrefix: '.',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/rcs-parametrix' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/rcs-parametrix' : '',
   trailingSlash: true,
   images: {
     domains: ['localhost'],
