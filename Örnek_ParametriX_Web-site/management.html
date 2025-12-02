@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParametriX Kurumsal Yönetim Sistemi</title>
+    <link rel="stylesheet" href="management-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNncmFkaWVudDApIi8+CjxwYXRoIGQ9Ik04IDE2QzggMTEuNTgxNyAxMS41ODE3IDggMTYgOEMyMC40MTgzIDggMjQgMTEuNTgxNyAyNCAxNkMyNCAyMC40MTgzIDIwLjQxODMgMjQgMTYgMjRDMTEuNTgxNyAyNCA4IDIwLjQxODMgOCAxNloiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8cGF0aCBkPSJNMTIgMTRIMjBWMThIMTJWMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTQgMTBIMThWMjJIMTRWMTBaIiBmaWxsPSJ3aGl0ZSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDAiIHgxPSIwIiB5MT0iMCIgeDI9IjMyIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzI1NjNFQiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3QzNBRUQiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-container glow-effect">
+            <div class="login-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span>ParametriX</span>
+                </div>
+                <h2>Kurumsal Yönetim Sistemi</h2>
+                <p>Güvenli girişiniz için kurumsal e-posta adresinizi kullanın</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-envelope"></i> E-posta Adresi
+                    </label>
+                    <input type="email" id="email" class="form-input" placeholder="ornek@rcsteknoloji.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-lock"></i> Şifre
+                    </label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-full">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Güvenli Giriş
+                </button>
+            </form>
+            <div class="login-footer">
+                <p>© 2024 RCS Teknoloji - ParametriX Management System</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span>ParametriX</span>
+                </a>
+
+                <nav class="nav-menu">
+                    <div class="nav-item active" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Genel Bakış</span>
+                    </div>
+                    <div class="nav-item" data-section="licenses">
+                        <i class="fas fa-key"></i>
+                        <span>Lisans Yönetimi</span>
+                    </div>
+                    <div class="nav-item" data-section="support">
+                        <i class="fas fa-headset"></i>
+                        <span>Teknik Destek</span>
+                    </div>
+                    <div class="nav-item" data-section="monitoring">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Canlı İzleme</span>
+                    </div>
+                    <div class="nav-item" data-section="reports">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Raporlar</span>
+                    </div>
+                    <div class="nav-item" data-section="users">
+                        <i class="fas fa-users"></i>
+                        <span>Kullanıcı Yönetimi</span>
+                    </div>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="theme-toggle" id="themeToggle">
+                        <div class="theme-toggle-slider"></div>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <span id="userInitials">AY</span>
+                        </div>
+                        <div class="user-details">
+                            <h4 id="userName">Ahmet Yılmaz</h4>
+                            <p id="userRole">SUPER ADMIN</p>
+                        </div>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Çıkış</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboardSection" class="section active">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-title-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div>
+                            <h1>Genel Bakış</h1>
+                            <p class="section-subtitle">ParametriX sistem durumu ve önemli metrikler</p>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Rapor İndir
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-sync-alt"></i>
+                            Yenile
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon primary">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalLicenses">1,294</h3>
+                            <p>Aktif Lisans</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon success">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="activeUsers">916</h3>
+                            <p>Aktif Kullanıcı</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="openTickets">26</h3>
+                            <p>Açık Destek Talebi</p>
+                            <div class="stat-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                -3%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon secondary">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="systemUptime">100.0%</h3>
+                            <p>Sistem Uptime</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-check"></i>
+                                Stabil
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Content Grid -->
+                <div class="cards-grid">
+                    <!-- Recent Activities -->
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <div class="section-title">
+                                <h3>Son Aktiviteler</h3>
+                            </div>
+                            <button class="btn btn-secondary btn-sm">
+                                Tümünü Gör
+                            </button>
+                        </div>
+                        <div id="recentActivities">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+
+                    <!-- System Status -->
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <div class="section-title">
+                                <h3>Sistem Durumu</h3>
+                            </div>
+                            <div class="badge badge-success pulse-animation">
+                                <i class="fas fa-circle"></i>
+                                Çevrimiçi
+                            </div>
+                        </div>
+                        <div id="systemStatus">
+                            <!-- Dynamic content -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Licenses Section -->
+            <section id="licensesSection" class="section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-title-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div>
+                            <h1>Lisans Yönetimi</h1>
+                            <p class="section-subtitle">Tüm ParametriX lisanslarını yönetin</p>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Dışa Aktar
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Yeni Lisans
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container glow-effect">
+                    <div class="table-header">
+                        <div class="table-title">
+                            <h3>Aktif Lisanslar</h3>
+                        </div>
+                        <div class="table-controls">
+                            <input type="text" class="search-input" placeholder="Lisans ara...">
+                            <select class="form-select">
+                                <option>Tüm Türler</option>
+                                <option>Standart</option>
+                                <option>Pro</option>
+                                <option>Premium</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Lisans Anahtarı</th>
+                                <th>Müşteri</th>
+                                <th>Tür</th>
+                                <th>Durum</th>
+                                <th>Bitiş Tarihi</th>
+                                <th>Cihaz Sayısı</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="licensesTableBody">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Support Section -->
+            <section id="supportSection" class="section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-title-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div>
+                            <h1>Teknik Destek</h1>
+                            <p class="section-subtitle">Müşteri destek taleplerini yönetin</p>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-filter"></i>
+                            Filtrele
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Yeni Talep
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cards-grid" id="supportTickets">
+                    <!-- Dynamic content -->
+                </div>
+            </section>
+
+            <!-- Monitoring Section -->
+            <section id="monitoringSection" class="section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-title-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h1>Canlı İzleme</h1>
+                            <p class="section-subtitle">Gerçek zamanlı sistem performansı ve analitikler</p>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary" id="pauseMonitoring">
+                            <i class="fas fa-pause"></i>
+                            Duraklat
+                        </button>
+                        <button class="btn btn-primary" id="refreshMonitoring">
+                            <i class="fas fa-sync-alt"></i>
+                            Yenile
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Real-time Stats Overview -->
+                <div class="stats-grid" style="margin-bottom: 2rem;">
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon success">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="liveActiveUsers">487</h3>
+                            <p>Anlık Aktif Kullanıcı</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12 son 5dk
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon primary">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="systemLoad">23%</h3>
+                            <p>Sistem Yükü</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-down"></i>
+                                Normal
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="apiRequests">1,247</h3>
+                            <p>API İstekleri/dk</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +5.2%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon secondary">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="uptimePercent">99.98%</h3>
+                            <p>Uptime (30 gün)</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-check"></i>
+                                Mükemmel
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Charts -->
+                <div class="cards-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 2rem;">
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-chart-area"></i>
+                                Sistem Performans Grafikleri
+                            </h3>
+                        </div>
+                        <div id="performanceCharts">
+                            <!-- Performance charts will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Canlı Metrikler
+                            </h3>
+                        </div>
+                        <div id="liveMetrics">
+                            <!-- Live metrics will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Health & Activities -->
+                <div class="cards-grid">
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-shield-alt"></i>
+                                Sistem Sağlığı
+                            </h3>
+                            <span class="badge badge-success pulse-animation">
+                                <i class="fas fa-circle"></i>
+                                Sağlıklı
+                            </span>
+                        </div>
+                        <div id="systemHealth">
+                            <!-- System health will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-list-alt"></i>
+                                Canlı Aktiviteler
+                            </h3>
+                            <button class="btn btn-sm btn-secondary" onclick="clearActivityLog()">
+                                <i class="fas fa-trash"></i>
+                                Temizle
+                            </button>
+                        </div>
+                        <div id="liveActivities">
+                            <!-- Live activities will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Kritik Uyarılar
+                            </h3>
+                            <span class="badge badge-success">
+                                0 Kritik
+                            </span>
+                        </div>
+                        <div id="criticalAlerts">
+                            <!-- Critical alerts will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-globe"></i>
+                                Coğrafi Dağılım
+                            </h3>
+                        </div>
+                        <div id="geographicData">
+                            <!-- Geographic data will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reportsSection" class="section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-title-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div>
+                            <h1>Raporlar</h1>
+                            <p class="section-subtitle">Detaylı analiz, metrikler ve raporlama sistemi</p>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary" id="selectDateRange">
+                            <i class="fas fa-calendar-alt"></i>
+                            Tarih Aralığı
+                        </button>
+                        <button class="btn btn-primary" id="downloadReports">
+                            <i class="fas fa-download"></i>
+                            Tüm Raporları İndir
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report Stats Overview -->
+                <div class="stats-grid" style="margin-bottom: 2rem;">
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon primary">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalRevenue">₺2.47M</h3>
+                            <p>Toplam Gelir (Bu Yıl)</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +23.5%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon success">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalCustomers">347</h3>
+                            <p>Aktif Müşteri</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12.8%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="renewalRate">94.2%</h3>
+                            <p>Yenileme Oranı</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +2.1%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card glow-effect">
+                        <div class="stat-icon secondary">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="avgUsageTime">127h</h3>
+                            <p>Ortalama Kullanım (Aylık)</p>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8.4%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue & Sales Charts -->
+                <div class="cards-grid" style="grid-template-columns: 2fr 1fr; margin-bottom: 2rem;">
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-chart-area"></i>
+                                Gelir Analizi (Son 12 Ay)
+                            </h3>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-sm btn-secondary" onclick="changeRevenueView('monthly')">Aylık</button>
+                                <button class="btn btn-sm btn-primary" onclick="changeRevenueView('quarterly')">Çeyreklik</button>
+                            </div>
+                        </div>
+                        <div id="revenueChart">
+                            <!-- Revenue chart will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-pie-chart"></i>
+                                Ürün Dağılımı
+                            </h3>
+                        </div>
+                        <div id="productDistribution">
+                            <!-- Product distribution will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analytics -->
+                <div class="cards-grid">
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-users-cog"></i>
+                                Kullanım Analizi
+                            </h3>
+                            <button class="btn btn-sm btn-secondary" onclick="exportUsageData()">
+                                <i class="fas fa-download"></i>
+                                Dışa Aktar
+                            </button>
+                        </div>
+                        <div id="usageAnalytics">
+                            <!-- Usage analytics will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Performans Raporları
+                            </h3>
+                            <span class="badge badge-success">
+                                Mükemmel
+                            </span>
+                        </div>
+                        <div id="performanceReports">
+                            <!-- Performance reports will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-handshake"></i>
+                                Müşteri Memnuniyeti
+                            </h3>
+                            <span class="badge badge-success pulse-animation">
+                                4.8/5.0
+                            </span>
+                        </div>
+                        <div id="customerSatisfaction">
+                            <!-- Customer satisfaction will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Sorun Analizi
+                            </h3>
+                            <span class="badge badge-warning">
+                                3 Kritik
+                            </span>
+                        </div>
+                        <div id="issueAnalysis">
+                            <!-- Issue analysis will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Tables -->
+                <div class="cards-grid" style="grid-template-columns: 1fr; margin-top: 2rem;">
+                    <div class="glass-card">
+                        <div class="section-header mb-3">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-table"></i>
+                                Detaylı Satış Raporu
+                            </h3>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <select class="form-select" style="width: auto;" onchange="filterSalesReport(this.value)">
+                                    <option value="all">Tüm Zamanlar</option>
+                                    <option value="thisMonth">Bu Ay</option>
+                                    <option value="lastMonth">Geçen Ay</option>
+                                    <option value="thisQuarter">Bu Çeyrek</option>
+                                </select>
+                                <button class="btn btn-sm btn-primary" onclick="exportSalesReport()">
+                                    <i class="fas fa-file-excel"></i>
+                                    Excel
+                                </button>
+                            </div>
+                        </div>
+                        <div id="detailedSalesReport">
+                            <!-- Detailed sales report table will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="usersSection" class="section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-title-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h1>Kullanıcı Yönetimi</h1>
+                            <p class="section-subtitle">Sistem kullanıcılarını yönetin</p>
+                        </div>
+                    </div>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-filter"></i>
+                            Filtrele
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i>
+                            Yeni Kullanıcı
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cards-grid" id="usersGrid">
+                    <!-- Dynamic content -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <script src="management-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParametriX Portal Seçimi</title>
+    <link rel="stylesheet" href="portal-selector-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="portal-container">
+        <!-- Animated Background -->
+        <div class="background-animation">
+            <div class="stars"></div>
+            <div class="neural-network"></div>
+            <div class="floating-particles"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="portal-header">
+            <div class="logo-container">
+                <div class="logo-3d">
+                    <i class="fas fa-cube"></i>
+                    <span>ParametriX</span>
+                </div>
+                <div class="logo-subtitle">Portal Merkezi</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="portal-main">
+            <div class="portal-title">
+                <h1 class="title-3d">Portal Seçimi</h1>
+                <p class="subtitle">Hangi portala erişmek istiyorsunuz?</p>
+            </div>
+
+            <div class="portals-grid">
+                <!-- Management Portal -->
+                <div class="portal-card management-portal" onclick="selectPortal('management')">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="portal-icon">
+                            <div class="icon-3d">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <h2 class="portal-name">Yönetim Merkezi</h2>
+                        <p class="portal-description">
+                            Sistem yönetimi, kullanıcı kontrolü, analitikler ve raporlama için gelişmiş yönetim paneli
+                        </p>
+                        <div class="portal-features">
+                            <div class="feature">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Analitikler & Raporlar</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-users-cog"></i>
+                                <span>Kullanıcı Yönetimi</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-server"></i>
+                                <span>Sistem İzleme</span>
+                            </div>
+                        </div>
+                        <div class="access-button">
+                            <span>Yönetim Paneline Giriş</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                </div>
+
+                <!-- Customer Portal -->
+                <div class="portal-card customer-portal" onclick="selectPortal('customer')">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="portal-icon">
+                            <div class="icon-3d">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="icon-glow"></div>
+                        </div>
+                        <h2 class="portal-name">Müşteri Portalı</h2>
+                        <p class="portal-description">
+                            Lisanslarınızı yönetin, destek alın, faturaları görüntüleyin ve ParametriX deneyiminizi optimize edin
+                        </p>
+                        <div class="portal-features">
+                            <div class="feature">
+                                <i class="fas fa-key"></i>
+                                <span>Lisans Yönetimi</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-headset"></i>
+                                <span>Teknik Destek</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Faturalar & Ödemeler</span>
+                            </div>
+                        </div>
+                        <div class="access-button">
+                            <span>Müşteri Paneline Giriş</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="hover-effect"></div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">347+</div>
+                        <div class="stat-label">Aktif Müşteri</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">7/24</div>
+                        <div class="stat-label">Destek</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="portal-footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" onclick="goHome()">
+                        <i class="fas fa-home"></i>
+                        Ana Sayfaya Dön
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-question-circle"></i>
+                        Yardım
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-phone"></i>
+                        İletişim
+                    </a>
+                </div>
+                <div class="copyright">
+                    © 2024 RCS Teknoloji - ParametriX Portal Merkezi
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-inner">
+                    <i class="fas fa-cube"></i>
+                </div>
+            </div>
+            <div class="loading-text">
+                <span id="loadingMessage">Portal hazırlanıyor...</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="portal-selector-script.js"></script>
+</body>
+</html>

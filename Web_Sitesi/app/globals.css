@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #7c3aed;
+  --accent-color: #06b6d4;
+  --dark-color: #0f172a;
+  --light-color: #f8fafc;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --white: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #2563eb 100%);
+  --gradient-premium: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--dark-color);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.custom-cursor-ring {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(94, 163, 255, 0.45);
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.28) 0%, rgba(124, 58, 237, 0.18) 60%, transparent 100%);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.35);
+  animation: cursorPulse 2.2s ease-in-out infinite;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.custom-cursor-core {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.92), rgba(6, 182, 212, 0.85));
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.8);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.custom-cursor--clicked .custom-cursor-ring {
+  transform: scale(0.72);
+  border-color: rgba(94, 163, 255, 0.75);
+  box-shadow: 0 0 35px rgba(59, 130, 246, 0.6);
+}
+
+.custom-cursor--clicked .custom-cursor-core {
+  transform: scale(0.8);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.85);
+}
+
+.custom-cursor-trail {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.55) 0%, rgba(37, 99, 235, 0.15) 55%, transparent 80%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: screen;
+  filter: blur(0.4px);
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.45);
+  transition: opacity 0.35s ease;
+}
+
+@keyframes cursorPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+.hero-animated-gradient {
+  background: linear-gradient(120deg, #2563eb, #7c3aed, #06b6d4, #2563eb);
+  background-size: 280% 280%;
+  animation: heroGradientShift 18s ease-in-out infinite;
+  display: inline-block;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-letter-accent {
+  display: inline-block;
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #06b6d4, #2563eb);
+  background-size: 260% 260%;
+  animation: heroGradientShift 16s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes heroGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.vertical-gradient-flow {
+  background: linear-gradient(
+    180deg,
+    rgba(37, 99, 235, 0) 0%,
+    rgba(37, 99, 235, 0.6) 25%,
+    rgba(124, 58, 237, 0.9) 50%,
+    rgba(6, 182, 212, 0.75) 75%,
+    rgba(37, 99, 235, 0) 100%
+  );
+  background-size: 100% 280%;
+  animation: gradientFlowDown 7s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.35));
+}
+
+@keyframes gradientFlowDown {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
